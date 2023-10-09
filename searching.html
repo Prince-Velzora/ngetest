@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Organs Search</title>
+    <style>
+        body {
+            .search-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .search-container img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .search-container:hover img {
+            transform: scale(1.1);
+        }
+
+        .search-container input {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            width: 80%;
+        }
+            background-image: url('https://cdn.wallpapersafari.com/11/7/Ls3Fmz.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-image: url('https://i.pinimg.com/564x/2a/2e/06/2a2e0666d4519e927b69276e942c81d0.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            color: #000000;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Human Organs Searching</h1>
+        <input type="text" id="searchInput" placeholder="Heart">
+        <button id="searchButton">Search</button>
+        <div id="searchResults"></div>
+    </div>
+    <script>
+        window.onload = function() {
+            alert("Welcome to our website, remember to use English to search for the organ.");
+        }    
+        const searchButton = document.getElementById('searchButton');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        const organsData = [
+            { name: 'Heart', description: 'The heart is a muscular organ that pumps blood throughout the body.' },
+            { name: 'Lungs', description: 'The lungs are essential for breathing, providing oxygen to the blood and removing carbon dioxide.' },
+            { name: 'Brain', description: 'The brain is the control center of the body, responsible for thoughts, emotions, and bodily functions.' },
+            { name: 'Liver', description: 'The liver is an organ that detoxifies various metabolites, synthesizes proteins, and produces biochemicals necessary for digestion and growth.' },
+            { name: 'Kidneys', description: 'The kidneys are two bean-shaped organs that extract waste from blood, balance body fluids, form urine, and aid in other important functions of the body.' },
+            { name: 'Stomach', description: 'The stomach is a muscular organ located on the left side of the upper abdomen which receives food from the esophagus and begins digestion by secreting gastric juice.' },
+            { name: 'Pancreas', description: 'The pancreas is an organ of the digestive system and endocrine system. It produces several important hormones, including insulin, and enzymes that help break down food.' },
+            { name: 'Intestines', description: 'The intestines are a long, continuous tube running from the stomach to the anus. They are responsible for absorbing nutrients from food.' },
+            { name: 'Skin', description: 'The skin is the largest organ of the body. It protects us from microbes and the elements, helps regulate body temperature, and permits the sensations of touch, heat, and cold.' },
+            { name: 'Eyes', description: 'The eyes are complex optical systems which collect light from the surrounding environment, regulate its intensity through a diaphragm, focus it through an adjustable assembly of lenses to form an image.' },
+            { name: 'Ears', description: 'The ears are organs that provide two main functions — hearing and balance — that depend on specialized receptors called hair cells.' },
+            { name: 'Appendix', description: 'The appendix is a small pouch attached to the large intestine where it joins the small intestine and does not have a known function.' },
+
+
+            // Add more organ data here
+        ];
+
+        searchButton.addEventListener('click', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            searchResults.innerHTML = '';
+
+            const matchingOrgans = organsData.filter(organ => organ.name.toLowerCase().includes(searchTerm));
+
+            matchingOrgans.forEach(organ => {
+                const organDiv = document.createElement('div');
+                organDiv.innerHTML = `<h2>${organ.name}</h2><p>${organ.description}</p>`;
+                searchResults.appendChild(organDiv);
+            });
+        });
+    </script>
+</body>
+</html>
